@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import { useFlags } from "launchdarkly-react-client-sdk";
+
 
 const client = generateClient<Schema>();
 
 function App() {
+  const { reactExample } = useFlags();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   useEffect(() => {
@@ -20,6 +23,7 @@ function App() {
   return (
     <main>
       <h1>My todos</h1>
+      <p>LaunchDarkly flag: {reactExample ? "enabled" : "disabled"}</p>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
