@@ -10,10 +10,7 @@ function deleteTodo(id: string) {
 
 function TodoItem({ todo }: { todo: Schema["Todo"]["type"] }) {
     return (
-        <div>
-            <span>{todo.content}</span>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-        </div>
+        <span className="small-text" onClick={() => deleteTodo(todo.id)}> -remove-</span>
     )
 }
 

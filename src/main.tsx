@@ -6,12 +6,11 @@ import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import { asyncWithLDProvider } from 'launchdarkly-react-client-sdk';
 
-
 Amplify.configure(outputs);
 
 (async () => {
   const LDProvider = await asyncWithLDProvider({
-    clientSideID: process.env.REACT_APP_LD_CLIENT_ID ?? '',
+    clientSideID: '667bb77aadc1dc1125e749b0',
     context: {
       kind: 'user',
       key: 'example-user-key',

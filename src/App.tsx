@@ -29,8 +29,8 @@ function App() {
       <ul>
         {todos.map((todo) => (
           <>
-            <li key={todo.id}>{todo.content}</li>
-            <div>{domInteraction ? <TodoItem todo={todo} /> : null}</div>
+            <li key={todo.id}>{todo.content}{domInteraction ? <TodoItem todo={todo} /> : null}
+            </li>
           </>
         ))}
       </ul>
