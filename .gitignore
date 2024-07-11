@@ -30,3 +30,4 @@ amplifyconfiguration*
 
 # local env files
 .env
+amplify_outputs.json

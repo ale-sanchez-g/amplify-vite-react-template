@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { useFlags } from "launchdarkly-react-client-sdk";
-
+import TodoItem from "./atomic/delete";
 
 const client = generateClient<Schema>();
 
 function App() {
-  const { reactExample } = useFlags();
+  const { reactExample, domInteraction } = useFlags();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  
 
   useEffect(() => {
     client.models.Todo.observeQuery().subscribe({
@@ -27,7 +28,10 @@ function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
+          <>
+            <li key={todo.id}>{todo.content}</li>
+            <div>{domInteraction ? <TodoItem todo={todo} /> : null}</div>
+          </>
         ))}
       </ul>
       <div>
