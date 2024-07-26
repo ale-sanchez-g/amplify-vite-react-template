@@ -8,10 +8,10 @@ function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
 }
 
-function TodoItem({ todo }: { todo: Schema["Todo"]["type"] }) {
+function DeleteItem({ todo }: { todo: Schema["Todo"]["type"] }) {
     return (
         <span className="small-text" onClick={() => deleteTodo(todo.id)}> -remove-</span>
     )
 }
 
-export default TodoItem;
+export default DeleteItem;
